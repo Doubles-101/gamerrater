@@ -1,0 +1,92 @@
+[
+    {
+        "model": "raterapi.image",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "game": 1,
+            "url": "https://example.com/image1.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 2,
+        "fields": {
+            "user": 2,
+            "game": 2,
+            "url": "https://example.com/image2.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 3,
+        "fields": {
+            "user": 3,
+            "game": 3,
+            "url": "https://example.com/image3.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 4,
+        "fields": {
+            "user": 4,
+            "game": 4,
+            "url": "https://example.com/image4.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 5,
+        "fields": {
+            "user": 5,
+            "game": 5,
+            "url": "https://example.com/image5.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 6,
+        "fields": {
+            "user": 6,
+            "game": 6,
+            "url": "https://example.com/image6.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 7,
+        "fields": {
+            "user": 1,
+            "game": 7,
+            "url": "https://example.com/image7.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 8,
+        "fields": {
+            "user": 2,
+            "game": 8,
+            "url": "https://example.com/image8.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 9,
+        "fields": {
+            "user": 3,
+            "game": 9,
+            "url": "https://example.com/image9.jpg"
+        }
+    },
+    {
+        "model": "raterapi.image",
+        "pk": 10,
+        "fields": {
+            "user": 4,
+            "game": 10,
+            "url": "https://example.com/image10.jpg"
+        }
+    }
+]

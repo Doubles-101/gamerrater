@@ -1,0 +1,162 @@
+[
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 1,
+        "fields": {
+            "game": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 2,
+        "fields": {
+            "game": 1,
+            "category": 2
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 3,
+        "fields": {
+            "game": 2,
+            "category": 3
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 4,
+        "fields": {
+            "game": 2,
+            "category": 4
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 5,
+        "fields": {
+            "game": 3,
+            "category": 5
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 6,
+        "fields": {
+            "game": 3,
+            "category": 6
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 7,
+        "fields": {
+            "game": 4,
+            "category": 7
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 8,
+        "fields": {
+            "game": 4,
+            "category": 8
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 9,
+        "fields": {
+            "game": 5,
+            "category": 9
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 10,
+        "fields": {
+            "game": 5,
+            "category": 10
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 11,
+        "fields": {
+            "game": 6,
+            "category": 1
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 12,
+        "fields": {
+            "game": 6,
+            "category": 2
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 13,
+        "fields": {
+            "game": 7,
+            "category": 3
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 14,
+        "fields": {
+            "game": 7,
+            "category": 4
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 15,
+        "fields": {
+            "game": 8,
+            "category": 5
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 16,
+        "fields": {
+            "game": 8,
+            "category": 6
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 17,
+        "fields": {
+            "game": 9,
+            "category": 7
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 18,
+        "fields": {
+            "game": 9,
+            "category": 8
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 19,
+        "fields": {
+            "game": 10,
+            "category": 9
+        }
+    },
+    {
+        "model": "raterapi.gamecategory",
+        "pk": 20,
+        "fields": {
+            "game": 10,
+            "category": 10
+        }
+    }
+]
