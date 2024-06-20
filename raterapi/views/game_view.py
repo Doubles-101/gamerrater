@@ -2,12 +2,14 @@ from rest_framework import viewsets, status, serializers, permissions
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
 from raterapi.models import Rating, Review, Image, Game
+from .category_view import CategorySerializer
 
 class GameSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True)
 
     class Meta:
         model = Game
-        fields = ['id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'estimated_time_to_play', 'age_recommendation']
+        fields = ['id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'estimated_time_to_play', 'age_recommendation', 'categories']
 
 
 
