@@ -5,11 +5,16 @@ from raterapi.models import Rating, Review, Image, Game
 from .category_view import CategorySerializer
 
 class GameSerializer(serializers.ModelSerializer):
+    is_owner = serializers.SerializerMethodField()
     categories = CategorySerializer(many=True)
+
+    def get_is_owner(self, obj):
+        # Check if the authenticated user is the owner
+        return self.context['request'].user == obj.user
 
     class Meta:
         model = Game
-        fields = ['id', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'estimated_time_to_play', 'age_recommendation', 'categories']
+        fields = ['id', 'user', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'estimated_time_to_play', 'age_recommendation', 'is_owner', 'categories']
 
 
 

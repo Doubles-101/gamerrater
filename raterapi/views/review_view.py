@@ -15,24 +15,24 @@ class ReviewViewSet(ViewSet):
     def list(self, request):
         chosen_game = request.query_params.get('gameId', None)
 
-        # Did the client use the `airline` query string parameter?
+        # Did the client use the `game` query string parameter?
         if chosen_game is not None:
 
-            # First, get the airline from the database to see if a valid one was requested
+            # First, get the game from the database to see if a valid one was requested
             try:
                 game = Game.objects.get(pk=chosen_game)
             except Game.DoesNotExist:
                 return Response(
-                    {'message': 'You requested flights for a non-existent airline'},
+                    {'message': 'You requested reviews for a non-existent game'},
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
-            # Valid airline `id` specified. Filter all flights by that airline.
+            # Valid game `id` specified. Filter all flights by that game.
             reviews = Review.objects.filter(game=game)
             serialized = ReviewSerializer(reviews, many=True)
             return Response(serialized.data, status=status.HTTP_200_OK)
 
-        # Client did NOT specify `airline` query string param, so get all of 'em
+        # Client did NOT specify `game` query string param, so get all of 'em
         reviews = Review.objects.all()
         serialized = ReviewSerializer(reviews, many=True)
         return Response(serialized.data, status=status.HTTP_200_OK)
