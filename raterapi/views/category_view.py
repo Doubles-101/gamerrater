@@ -1,7 +1,7 @@
 from rest_framework import viewsets, status, serializers, permissions
 from rest_framework.response import Response
 from rest_framework.viewsets import ViewSet
-from raterapi.models import  Game, Category
+from raterapi.models import Category
 
 class CategorySerializer(serializers.ModelSerializer):
 

@@ -29,3 +29,34 @@ class GameViewSet(ViewSet):
 
         except Game.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+        
+    def create(self, request):
+        # Get the data from the client's JSON payload
+        title = request.data.get('title')
+        description = request.data.get('description')
+        designer = request.data.get('designer')
+        year_released = request.data.get('year_released')
+        number_of_players = request.data.get('number_of_players')
+        estimated_time_to_play = request.data.get('estimated_time_to_play')
+        age_recommendation = request.data.get('age_recommendation')
+
+        # Create a book database row first, so you have a
+        # primary key to work with
+        game = Game.objects.create(
+            user=request.auth.user,
+            title=title,
+            description=description,
+            designer=designer,
+            year_released=year_released,
+            number_of_players=number_of_players,
+            estimated_time_to_play=estimated_time_to_play,
+            age_recommendation=age_recommendation,
+            )
+
+        # Establish the many-to-many relationships
+        category_ids = request.data.get('categories', [])
+        game.categories.set(category_ids)
+
+        serializer = GameSerializer(game, context={'request': request})
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+ 
