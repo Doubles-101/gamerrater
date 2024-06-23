@@ -65,3 +65,24 @@ class GameViewSet(ViewSet):
         serializer = GameSerializer(game, context={'request': request})
         return Response(serializer.data, status=status.HTTP_201_CREATED)
  
+    def update(self, request, pk=None):
+        try:
+            game = Game.objects.get(pk=pk)
+            game.title = request.data.get('title', game.title)
+            game.description = request.data.get('description', game.description)
+            game.designer = request.data.get('designer', game.designer)
+            game.year_released = request.data.get('year_released', game.year_released)
+            game.number_of_players = request.data.get('number_of_players', game.number_of_players)
+            game.estimated_time_to_play = request.data.get('estimated_time_to_play', game.estimated_time_to_play)
+            game.age_recommendation = request.data.get('age_recommendation', game.age_recommendation)
+
+            category_ids = request.data.get('categories', [])
+            if category_ids:
+                game.categories.set(category_ids)
+
+            game.save()
+
+            serializer = GameSerializer(game, context={'request': request})
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Game.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)

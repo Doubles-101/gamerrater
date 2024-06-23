@@ -27,7 +27,7 @@ class ReviewViewSet(ViewSet):
                     status=status.HTTP_400_BAD_REQUEST
                 )
 
-            # Valid game `id` specified. Filter all flights by that game.
+            # Valid game `id` specified. Filter all reviews by that game.
             reviews = Review.objects.filter(game=game)
             serialized = ReviewSerializer(reviews, many=True)
             return Response(serialized.data, status=status.HTTP_200_OK)
