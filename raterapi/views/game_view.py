@@ -7,14 +7,18 @@ from .category_view import CategorySerializer
 class GameSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     categories = CategorySerializer(many=True)
+    average_rating = serializers.SerializerMethodField()
 
     def get_is_owner(self, obj):
         # Check if the authenticated user is the owner
         return self.context['request'].user == obj.user
+    
+    def get_average_rating(self, obj):
+        return obj.average_rating
 
     class Meta:
         model = Game
-        fields = ['id', 'user', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'estimated_time_to_play', 'age_recommendation', 'is_owner', 'categories']
+        fields = ['id', 'user', 'title', 'description', 'designer', 'year_released', 'number_of_players', 'estimated_time_to_play', 'age_recommendation', 'is_owner', 'categories', 'average_rating']
 
 
 

@@ -8,6 +8,6 @@ class Rating(models.Model):
     game = models.ForeignKey('Game', on_delete=models.CASCADE, related_name="ratings")
     rating_number = models.IntegerField(validators=[
             MinValueValidator(1),
-            MaxValueValidator(5)
+            MaxValueValidator(10)
         ])
     

@@ -21,3 +21,22 @@ class Game(models.Model):
             MinValueValidator(1),
             MaxValueValidator(120)
         ])
+    
+    @property
+    def average_rating(self):
+        """Average rating calculated attribute for each game"""
+        ratings = self.ratings.all()
+
+        if not ratings:
+            return 0
+
+        # Sum all of the ratings for the game
+        total_rating = 0
+        for rating in ratings:
+            total_rating += rating.rating_number
+
+        # Calculate the average and return it.
+        average = total_rating / len(ratings)
+
+        return average
+        #return the result
