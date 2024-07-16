@@ -27,21 +27,44 @@ class GameViewSet(ViewSet):
     permission_classes = [permissions.AllowAny]
 
     def list(self, request):
-        search_text = self.request.query_params.get('q', None)
+        try:
+            search_text = self.request.query_params.get('q', None)
+            sorting_text = self.request.query_params.get('orderby', None)
 
-        if search_text == None:
-            games = Game.objects.all()
-            serializer = GameSerializer(games, many=True, context={'request': request})
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        
-        elif search_text != None:
-            games = Game.objects.filter(
-                Q(title__contains=search_text) |
-                Q(description__contains=search_text) |
-                Q(designer__contains=search_text)
-)
-            serializer = GameSerializer(games, many=True, context={'request': request})
-            return Response(serializer.data, status=status.HTTP_200_OK)
+            if search_text is None and sorting_text is None:
+                games = Game.objects.all()
+                serializer = GameSerializer(games, many=True, context={'request': request})
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            
+            elif search_text is not None:
+                games = Game.objects.filter(
+                    Q(title__contains=search_text) |
+                    Q(description__contains=search_text) |
+                    Q(designer__contains=search_text)
+                )
+                serializer = GameSerializer(games, many=True, context={'request': request})
+                return Response(serializer.data, status=status.HTTP_200_OK)
+            
+            elif sorting_text == "year":
+                games = Game.objects.all().order_by('year_released')
+                serializer = GameSerializer(games, many=True, context={'request': request})
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            elif sorting_text == "designer":
+                games = Game.objects.all().order_by('designer')
+                serializer = GameSerializer(games, many=True, context={'request': request})
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            elif sorting_text == "time":
+                games = Game.objects.all().order_by('estimated_time_to_play')
+                serializer = GameSerializer(games, many=True, context={'request': request})
+                return Response(serializer.data, status=status.HTTP_200_OK)
+
+            else:
+                return Response({'error': 'Invalid sorting parameter'}, status=status.HTTP_400_BAD_REQUEST)
+            
+        except Exception as e:
+            return Response({'error': str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def retrieve(self, request, pk=None):
         try:
